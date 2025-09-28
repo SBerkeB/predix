@@ -164,9 +164,9 @@
       "status": "active",
       "votes": {
         "yes": 1,
-        "no": 0
+        "no": 1
       },
-      "totalVotes": 1
+      "totalVotes": 2
     }
   ],
   "categories": [
@@ -182,7 +182,7 @@
     "Health"
   ],
   "metadata": {
-    "lastUpdated": "2025-09-28T12:09:13.041Z",
+    "lastUpdated": "2025-09-28T12:16:02.251Z",
     "totalPredictions": 8,
     "totalVotes": 3240,
     "version": "1.0"
