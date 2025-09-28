@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
-
+//789789789
 const Navbar = () => {
   const { colors, actions } = useApp();
   const [isScrolled, setIsScrolled] = useState(false);
