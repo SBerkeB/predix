@@ -27,6 +27,36 @@
       }
     },
     {
+      "id": "6",
+      "title": "Who will win the next game ?",
+      "description": "",
+      "category": "Entertainment",
+      "createdBy": "FGCFanatic",
+      "createdAt": "2025-03-01T18:30:00Z",
+      "expiresAt": "2025-10-15T23:59:59Z",
+      "status": "active",
+      "votes": {
+        "player1": 0,
+        "player2": 0
+      },
+      "totalVotes": 0,
+      "tags": [
+        "street-fighter",
+        "esports",
+        "fgc",
+        "daigo",
+        "tokido"
+      ],
+      "image": null,
+      "aiThoughts": "Yay, Player1. I bet it all on Daigo once… big mistake. This time, I’m going with the crowd.",
+      "gameDetails": {
+        "player1Name": "Player1",
+        "player2Name": "Player2",
+        "game": "Street Fighter 6",
+        "tournament": "World Championship Finals"
+      }
+    },
+    {
       "id": "1",
       "title": "Bitcoin will reach $150,000 by end of 2025",
       "description": "Prediction about Bitcoin's price reaching a new all-time high of $150,000 by December 31, 2025.",
@@ -135,37 +165,8 @@
       ],
       "image": null,
       "aiThoughts": "Nay. My laptop still freezes on Microsoft Word—don’t tell me some nerd cracked encryption."
-    },
-    {
-      "id": "6",
-      "title": "Who will win the next game ?",
-      "description": "",
-      "category": "Entertainment",
-      "createdBy": "FGCFanatic",
-      "createdAt": "2025-03-01T18:30:00Z",
-      "expiresAt": "2025-10-15T23:59:59Z",
-      "status": "active",
-      "votes": {
-        "player1": 2,
-        "player2": 1
-      },
-      "totalVotes": 3,
-      "tags": [
-        "street-fighter",
-        "esports",
-        "fgc",
-        "daigo",
-        "tokido"
-      ],
-      "image": null,
-      "aiThoughts": "Yay, Player1. I bet it all on Daigo once… big mistake. This time, I’m going with the crowd.",
-      "gameDetails": {
-        "player1Name": "Player1",
-        "player2Name": "Player2",
-        "game": "Street Fighter 6",
-        "tournament": "World Championship Finals"
-      }
     }
+    
   ],
   "categories": [
     "Technology",
