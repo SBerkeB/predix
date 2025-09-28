@@ -133,6 +133,40 @@
         "game": "Street Fighter 6",
         "tournament": "World Championship Finals"
       }
+    },
+    {
+      "id": "1759058708701",
+      "title": "2434321324324232",
+      "description": "2343243243423241324234241324",
+      "category": "Cryptocurrency",
+      "expiresAt": "2025-10-01T11:25:00.000Z",
+      "tags": [],
+      "createdBy": "Anonymous",
+      "createdAt": "2025-09-28T11:25:08.701Z",
+      "status": "active",
+      "votes": {
+        "yes": 0,
+        "no": 0
+      },
+      "totalVotes": 0
+    },
+    {
+      "id": "1759058726298",
+      "title": "223432423142343241234",
+      "description": "324321432432141213421341324231424132134",
+      "category": "Sports",
+      "expiresAt": "2025-09-30T11:25:00.000Z",
+      "tags": [
+        "32413241324324"
+      ],
+      "createdBy": "324432",
+      "createdAt": "2025-09-28T11:25:26.298Z",
+      "status": "active",
+      "votes": {
+        "yes": 0,
+        "no": 0
+      },
+      "totalVotes": 0
     }
   ],
   "categories": [
@@ -148,8 +182,8 @@
     "Health"
   ],
   "metadata": {
-    "lastUpdated": "2025-09-28T09:49:26.838Z",
-    "totalPredictions": 6,
+    "lastUpdated": "2025-09-28T11:25:26.298Z",
+    "totalPredictions": 8,
     "totalVotes": 3240,
     "version": "1.0"
   }
