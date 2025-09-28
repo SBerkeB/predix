@@ -1,0 +1,27 @@
+#pragma version 6
+txn ApplicationID
+int 0
+==
+bnz main_l4
+txn OnCompletion
+int NoOp
+==
+bnz main_l3
+err
+main_l3:
+txn NumAppArgs
+int 1
+==
+assert
+byte "price"
+txna ApplicationArgs 0
+btoi
+app_global_put
+int 1
+return
+main_l4:
+byte "price"
+int 1000
+app_global_put
+int 1
+return
