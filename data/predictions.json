@@ -167,6 +167,54 @@
         "no": 1
       },
       "totalVotes": 2
+    },
+    {
+      "id": "1759062137299",
+      "title": "1122112121221212121",
+      "description": "1212211111111111111111111111111",
+      "category": "Automotive",
+      "expiresAt": "2025-10-09T12:22:00.000Z",
+      "tags": [],
+      "createdBy": "Anonymous",
+      "createdAt": "2025-09-28T12:22:17.299Z",
+      "status": "active",
+      "votes": {
+        "yes": 0,
+        "no": 1
+      },
+      "totalVotes": 1
+    },
+    {
+      "id": "1759064474561",
+      "title": "123213213213213",
+      "description": "2132132332432432413214324234234",
+      "category": "Economics",
+      "expiresAt": "2025-10-02T13:01:00.000Z",
+      "tags": [],
+      "createdBy": "Anonymous",
+      "createdAt": "2025-09-28T13:01:14.561Z",
+      "status": "active",
+      "votes": {
+        "yes": 1,
+        "no": 1
+      },
+      "totalVotes": 2
+    },
+    {
+      "id": "1759064526523",
+      "title": "1111111111111",
+      "description": "11111111111111111111111111111111111",
+      "category": "Automotive",
+      "expiresAt": "2025-10-08T13:02:00.000Z",
+      "tags": [],
+      "createdBy": "Anonymous",
+      "createdAt": "2025-09-28T13:02:06.523Z",
+      "status": "active",
+      "votes": {
+        "yes": 1,
+        "no": 1
+      },
+      "totalVotes": 2
     }
   ],
   "categories": [
@@ -182,8 +230,8 @@
     "Health"
   ],
   "metadata": {
-    "lastUpdated": "2025-09-28T12:16:02.251Z",
-    "totalPredictions": 8,
+    "lastUpdated": "2025-09-28T13:02:17.782Z",
+    "totalPredictions": 11,
     "totalVotes": 3240,
     "version": "1.0"
   }

@@ -4,10 +4,10 @@ import next from 'next';
 import { Server } from 'socket.io';
 
 const dev = process.env.NODE_ENV !== 'production';
-const hostname = dev ? 'localhost' : '0.0.0.0';
+const hostname = 'localhost';
 const port = process.env.PORT || 3001;
 
-const app = next({ dev, hostname: dev ? hostname : undefined, port });
+const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
@@ -24,14 +24,9 @@ app.prepare().then(() => {
 
   const io = new Server(httpServer, {
     cors: {
-      origin: dev ? ["http://localhost:3000", "http://localhost:3001"] : "*",
-      methods: ["GET", "POST"],
-      credentials: false
-    },
-    allowEIO3: true,
-    transports: ['websocket', 'polling'],
-    pingTimeout: 60000,
-    pingInterval: 25000
+      origin: "*",
+      methods: ["GET", "POST"]
+    }
   });
 
   io.on('connection', (socket) => {
@@ -60,8 +55,6 @@ app.prepare().then(() => {
       process.exit(1);
     })
     .listen(port, () => {
-      console.log(`> Ready on http://0.0.0.0:${port}`);
-      console.log(`> Environment: ${process.env.NODE_ENV}`);
-      console.log(`> Socket.IO server initialized`);
+      console.log(`> Ready on http://${hostname}:${port}`);
     });
 });
