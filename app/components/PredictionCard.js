@@ -190,14 +190,23 @@ const PredictionCard = ({ prediction }) => {
 
         {/* Vote Progress Bar */}
         <div 
-          className="w-full bg-gray-700 rounded-full h-2 overflow-hidden"
+          className="w-full bg-gray-700 rounded-full h-2 overflow-hidden relative"
           style={{ backgroundColor: colors.background.tertiary }}
         >
+          {/* First option (Yes/Player1) - Green */}
           <div 
-            className="h-full transition-all duration-500 ease-out"
+            className="h-full transition-all duration-500 ease-out absolute left-0"
             style={{ 
               width: `${getVotePercentage(getVoteOptions()[0])}%`,
               background: getVoteColor(getVoteOptions()[0])
+            }}
+          />
+          {/* Second option (No/Player2) - Red, from right side */}
+          <div 
+            className="h-full transition-all duration-500 ease-out absolute right-0"
+            style={{ 
+              width: `${getVotePercentage(getVoteOptions()[1])}%`,
+              background: getVoteColor(getVoteOptions()[1])
             }}
           />
         </div>
