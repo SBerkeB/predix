@@ -175,12 +175,12 @@ const PredictionCard = ({ prediction }) => {
           {prediction.description}
         </p>
         <div>
-          <Image width={80} height={80} alt="Randy Marsh" src="/download.png"/>
+         {/*  <Image width={80} height={80} alt="Randy Marsh" src="/download.png"/> */}
           <p 
-            className="text-sm font-semibold leading-relaxed"
+            className="text-sm italic leading-relaxed py-2"
             style={{ color: colors.text.secondary }}
           >
-            {prediction.aiThoughts}
+           Randy : {prediction.aiThoughts}
           </p>
         </div>
       </div>

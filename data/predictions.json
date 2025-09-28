@@ -10,10 +10,10 @@
       "expiresAt": "2025-12-31T23:59:59Z",
       "status": "active",
       "votes": {
-        "Higher": 99,
+        "Higher": 100,
         "Lower": 1
       },
-      "totalVotes": 100,
+      "totalVotes": 101,
       "tags": [
         "Algorand",
         "cryptocurrency",
@@ -36,10 +36,10 @@
       "expiresAt": "2025-12-31T23:59:59Z",
       "status": "active",
       "votes": {
-        "yes": 245,
+        "yes": 246,
         "no": 123
       },
-      "totalVotes": 368,
+      "totalVotes": 369,
       "tags": [
         "bitcoin",
         "cryptocurrency",
@@ -59,16 +59,16 @@
       "status": "active",
       "votes": {
         "yes": 189,
-        "no": 267
+        "no": 268
       },
-      "totalVotes": 456,
+      "totalVotes": 457,
       "tags": [
         "ai",
         "turing-test",
         "technology"
       ],
       "image": null,
-      "aiThoughts":"Nay. I still can’t tell if Alexa’s messing with me or just dumb. And that’s supposed to be the smart one."
+      "aiThoughts": "Nay. I still can’t tell if Alexa’s messing with me or just dumb. And that’s supposed to be the smart one."
     },
     {
       "id": "3",
@@ -80,17 +80,17 @@
       "expiresAt": "2025-12-31T23:59:59Z",
       "status": "active",
       "votes": {
-        "yes": 312,
+        "yes": 313,
         "no": 198
       },
-      "totalVotes": 510,
+      "totalVotes": 511,
       "tags": [
         "tesla",
         "autonomous-driving",
         "robotaxi"
       ],
       "image": null,
-      "aiThoughts":"Yay. Elon’s just crazy enough to toss a car at random people and call it a taxi."
+      "aiThoughts": "Yay. Elon’s just crazy enough to toss a car at random people and call it a taxi."
     },
     {
       "id": "4",
@@ -112,7 +112,7 @@
         "space-exploration"
       ],
       "image": null,
-      "aiThoughts":"Nay… unless they count Randy Marsh passed out in a rocket as ‘landing.’ Then yay."
+      "aiThoughts": "Nay… unless they count Randy Marsh passed out in a rocket as ‘landing.’ Then yay."
     },
     {
       "id": "5",
@@ -134,7 +134,7 @@
         "cybersecurity"
       ],
       "image": null,
-      "aiThoughts":"Nay. My laptop still freezes on Microsoft Word—don’t tell me some nerd cracked encryption."
+      "aiThoughts": "Nay. My laptop still freezes on Microsoft Word—don’t tell me some nerd cracked encryption."
     },
     {
       "id": "6",
@@ -165,42 +165,6 @@
         "game": "Street Fighter 6",
         "tournament": "World Championship Finals"
       }
-    },
-    {
-      "id": "1759058708701",
-      "title": "2434321324324232",
-      "description": "2343243243423241324234241324",
-      "category": "Cryptocurrency",
-      "expiresAt": "2025-10-01T11:25:00.000Z",
-      "tags": [],
-      "createdBy": "Anonymous",
-      "createdAt": "2025-09-28T11:25:08.701Z",
-      "status": "active",
-      "votes": {
-        "yes": 1,
-        "no": 1
-      },
-      "totalVotes": 2,
-      "aiThoughts": "Nay. If even the title looks drunk, I’m not trusting it."
-    },
-    {
-      "id": "1759058726298",
-      "title": "223432423142343241234",
-      "description": "324321432432141213421341324231424132134",
-      "category": "Sports",
-      "expiresAt": "2025-09-30T11:25:00.000Z",
-      "tags": [
-        "32413241324324"
-      ],
-      "createdBy": "324432",
-      "createdAt": "2025-09-28T11:25:26.298Z",
-      "status": "active",
-      "votes": {
-        "yes": 1,
-        "no": 1
-      },
-      "totalVotes": 2,
-      "aiThoughts": "Yay. Sports are always a yay. Unless it's baseball. Then who cares?"
     }
   ],
   "categories": [
@@ -216,7 +180,7 @@
     "Health"
   ],
   "metadata": {
-    "lastUpdated": "2025-09-28T13:02:17.782Z",
+    "lastUpdated": "2025-09-28T13:58:41.051Z",
     "totalPredictions": 11,
     "totalVotes": 3240,
     "version": "1.0"
