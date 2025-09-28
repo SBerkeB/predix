@@ -241,7 +241,7 @@ const PredictionCard = ({ prediction }) => {
             color: colors.status.success
           }}
         >
-          ✓ You voted "{userVote.toUpperCase()}" on this prediction
+          ✓ You voted &quot;{userVote.toUpperCase()}&quot; on this prediction
         </div>
       )}
     </div>

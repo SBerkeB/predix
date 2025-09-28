@@ -56,7 +56,7 @@ export default function Home() {
               className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto"
               style={{ color: colors.text.secondary }}
             >
-              Join the world's most advanced prediction market. Create predictions, vote on outcomes, and discover what the collective intelligence thinks about tomorrow.
+              Join the world&apos;s most advanced prediction market. Create predictions, vote on outcomes, and discover what the collective intelligence thinks about tomorrow.
             </p>
             
             {/* Stats */}

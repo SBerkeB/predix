@@ -94,7 +94,7 @@ const Footer = () => {
               className="text-base max-w-md"
               style={{ color: colors.text.muted }}
             >
-              The future of prediction markets. Create, vote, and discover what the world thinks about tomorrow's biggest questions.
+              The future of prediction markets. Create, vote, and discover what the world thinks about tomorrow&apos;s biggest questions.
             </p>
             <div className="flex space-x-6">
               {socialLinks.map((item) => (
