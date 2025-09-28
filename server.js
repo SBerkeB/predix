@@ -4,10 +4,10 @@ import next from 'next';
 import { Server } from 'socket.io';
 
 const dev = process.env.NODE_ENV !== 'production';
-const hostname = 'localhost';
+const hostname = dev ? 'localhost' : '0.0.0.0';
 const port = process.env.PORT || 3001;
 
-const app = next({ dev, hostname, port });
+const app = next({ dev, hostname: dev ? hostname : undefined, port });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
@@ -24,9 +24,11 @@ app.prepare().then(() => {
 
   const io = new Server(httpServer, {
     cors: {
-      origin: "*",
-      methods: ["GET", "POST"]
-    }
+      origin: dev ? "http://localhost:3000" : true,
+      methods: ["GET", "POST"],
+      credentials: true
+    },
+    allowEIO3: true
   });
 
   io.on('connection', (socket) => {
@@ -54,7 +56,7 @@ app.prepare().then(() => {
       console.error(err);
       process.exit(1);
     })
-    .listen(port, () => {
+    .listen(port, hostname, () => {
       console.log(`> Ready on http://${hostname}:${port}`);
     });
 });
