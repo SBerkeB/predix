@@ -1,7 +1,6 @@
 'use client';
 
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
-import { initSocket, emitVoteUpdate, emitPredictionCreated, onVoteUpdated, onPredictionAdded, offVoteUpdated, offPredictionAdded } from '../../lib/socket';
 
 // X-inspired color palette based on the PXA logo
 export const colors = {
@@ -190,30 +189,6 @@ const AppContext = createContext();
 export function AppProvider({ children }) {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
-  // Initialize Socket.IO and set up event listeners
-  useEffect(() => {
-    const socket = initSocket();
-
-    // Listen for vote updates from other clients
-    const handleVoteUpdate = (updatedPrediction) => {
-      dispatch({ type: actionTypes.UPDATE_PREDICTION, payload: updatedPrediction });
-    };
-
-    // Listen for new predictions from other clients
-    const handlePredictionAdded = (newPrediction) => {
-      dispatch({ type: actionTypes.ADD_PREDICTION, payload: newPrediction });
-    };
-
-    onVoteUpdated(handleVoteUpdate);
-    onPredictionAdded(handlePredictionAdded);
-
-    // Cleanup listeners on unmount
-    return () => {
-      offVoteUpdated(handleVoteUpdate);
-      offPredictionAdded(handlePredictionAdded);
-    };
-  }, []);
-
   // Load predictions and user votes on component mount
   useEffect(() => {
     loadPredictions();
@@ -252,9 +227,6 @@ export function AppProvider({ children }) {
       const newPrediction = await response.json();
       dispatch({ type: actionTypes.ADD_PREDICTION, payload: newPrediction });
       dispatch({ type: actionTypes.SET_LOADING, payload: false });
-      
-      // Broadcast new prediction to other clients
-      emitPredictionCreated(newPrediction);
       
       // Refresh the predictions list to ensure we have the latest data
       await loadPredictions();
@@ -300,9 +272,6 @@ export function AppProvider({ children }) {
       
       // Update with the actual server response to ensure consistency
       dispatch({ type: actionTypes.UPDATE_PREDICTION, payload: result.prediction });
-      
-      // Broadcast vote update to other clients
-      emitVoteUpdate(result.prediction);
     } catch (error) {
       dispatch({ type: actionTypes.SET_ERROR, payload: error.message });
       // TODO: Implement proper rollback of optimistic update
