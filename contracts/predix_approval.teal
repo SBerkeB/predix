@@ -1,0 +1,784 @@
+#pragma version 8
+txn ApplicationID
+int 0
+==
+bnz main_l40
+txn OnCompletion
+int NoOp
+==
+bnz main_l3
+err
+main_l3:
+txna ApplicationArgs 0
+byte "bet_up"
+==
+bnz main_l36
+txna ApplicationArgs 0
+byte "bet_down"
+==
+bnz main_l32
+txna ApplicationArgs 0
+byte "resolve"
+==
+bnz main_l21
+txna ApplicationArgs 0
+byte "claim"
+==
+bnz main_l8
+err
+main_l8:
+txn NumAppArgs
+int 2
+==
+assert
+txna ApplicationArgs 1
+btoi
+store 18
+load 18
+callsub loadroundbox_2
+store 19
+load 19
+extract 32 8
+btoi
+int 1
+==
+assert
+load 19
+extract 40 8
+btoi
+store 26
+load 19
+extract 16 8
+btoi
+store 24
+load 19
+extract 24 8
+btoi
+store 25
+byte "b|"
+load 18
+itob
+concat
+byte "|"
+concat
+txn Sender
+concat
+store 20
+load 20
+box_get
+store 31
+store 30
+load 20
+box_get
+store 31
+store 30
+load 31
+assert
+load 30
+store 21
+load 21
+extract 16 8
+btoi
+int 0
+==
+assert
+load 21
+extract 0 8
+btoi
+store 22
+load 21
+extract 8 8
+btoi
+store 23
+load 24
+load 25
++
+store 27
+load 26
+int 1
+==
+bnz main_l20
+load 26
+int 2
+==
+bnz main_l19
+int 0
+main_l11:
+store 28
+load 26
+int 0
+==
+bnz main_l18
+load 23
+load 26
+!=
+bnz main_l17
+load 22
+load 27
+mulw
+int 0
+load 28
+divmodw
+pop
+pop
+swap
+!
+assert
+main_l14:
+store 29
+load 18
+txn Sender
+callsub markclaimed_5
+load 29
+int 0
+>
+bnz main_l16
+main_l15:
+int 1
+return
+main_l16:
+txn Sender
+load 29
+callsub payout_6
+b main_l15
+main_l17:
+int 0
+b main_l14
+main_l18:
+load 22
+b main_l14
+main_l19:
+load 25
+b main_l11
+main_l20:
+load 24
+b main_l11
+main_l21:
+txn NumAppArgs
+int 2
+==
+assert
+txna ApplicationArgs 1
+store 10
+load 10
+byte "latest"
+==
+bnz main_l29
+load 10
+btoi
+main_l23:
+store 11
+load 11
+callsub loadroundbox_2
+store 12
+load 12
+extract 32 8
+btoi
+int 0
+==
+assert
+byte "oracle_app_id"
+app_global_get
+store 13
+load 13
+callsub readoracleprice_0
+store 14
+load 12
+extract 0 8
+btoi
+store 15
+load 14
+load 15
+>
+bnz main_l28
+load 14
+load 15
+<
+bnz main_l27
+int 0
+main_l26:
+store 16
+load 15
+itob
+load 14
+itob
+concat
+load 12
+extract 16 8
+btoi
+itob
+concat
+load 12
+extract 24 8
+btoi
+itob
+concat
+load 12
+extract 48 8
+btoi
+itob
+concat
+int 1
+itob
+concat
+load 16
+itob
+concat
+store 17
+load 11
+load 17
+callsub saveroundbox_3
+int 1
+return
+main_l27:
+int 2
+b main_l26
+main_l28:
+int 1
+b main_l26
+main_l29:
+global Round
+int 10
+/
+int 0
+==
+bnz main_l31
+global Round
+int 10
+/
+int 1
+-
+b main_l23
+main_l31:
+int 0
+b main_l23
+main_l32:
+txn NumAppArgs
+int 1
+==
+assert
+global GroupSize
+int 2
+==
+assert
+txn GroupIndex
+int 1
+==
+assert
+int 0
+gtxns TypeEnum
+int pay
+==
+assert
+int 0
+gtxns Receiver
+global CurrentApplicationAddress
+==
+assert
+int 0
+gtxns Amount
+int 0
+>
+assert
+global Round
+int 10
+/
+store 5
+byte "oracle_app_id"
+app_global_get
+store 9
+load 9
+load 5
+callsub ensureroundinit_1
+load 5
+callsub loadroundbox_2
+store 6
+int 0
+gtxns Amount
+store 7
+int 2
+int 1
+==
+bnz main_l35
+load 6
+extract 0 8
+btoi
+itob
+load 6
+extract 8 8
+btoi
+itob
+concat
+load 6
+extract 16 8
+btoi
+itob
+concat
+load 6
+extract 24 8
+btoi
+load 7
++
+itob
+concat
+load 6
+extract 32 8
+btoi
+itob
+concat
+load 6
+extract 40 8
+btoi
+itob
+concat
+load 6
+extract 48 8
+btoi
+itob
+concat
+main_l34:
+store 8
+load 5
+load 8
+callsub saveroundbox_3
+load 5
+txn Sender
+load 7
+int 2
+callsub recordbet_4
+txn Sender
+load 6
+extract 48 8
+btoi
+callsub issuereceipt_7
+int 1
+return
+main_l35:
+load 6
+extract 0 8
+btoi
+itob
+load 6
+extract 8 8
+btoi
+itob
+concat
+load 6
+extract 16 8
+btoi
+load 7
++
+itob
+concat
+load 6
+extract 24 8
+btoi
+itob
+concat
+load 6
+extract 32 8
+btoi
+itob
+concat
+load 6
+extract 40 8
+btoi
+itob
+concat
+load 6
+extract 48 8
+btoi
+itob
+concat
+b main_l34
+main_l36:
+txn NumAppArgs
+int 1
+==
+assert
+global GroupSize
+int 2
+==
+assert
+txn GroupIndex
+int 1
+==
+assert
+int 0
+gtxns TypeEnum
+int pay
+==
+assert
+int 0
+gtxns Receiver
+global CurrentApplicationAddress
+==
+assert
+int 0
+gtxns Amount
+int 0
+>
+assert
+global Round
+int 10
+/
+store 0
+byte "oracle_app_id"
+app_global_get
+store 4
+load 4
+load 0
+callsub ensureroundinit_1
+load 0
+callsub loadroundbox_2
+store 1
+int 0
+gtxns Amount
+store 2
+int 1
+int 1
+==
+bnz main_l39
+load 1
+extract 0 8
+btoi
+itob
+load 1
+extract 8 8
+btoi
+itob
+concat
+load 1
+extract 16 8
+btoi
+itob
+concat
+load 1
+extract 24 8
+btoi
+load 2
++
+itob
+concat
+load 1
+extract 32 8
+btoi
+itob
+concat
+load 1
+extract 40 8
+btoi
+itob
+concat
+load 1
+extract 48 8
+btoi
+itob
+concat
+main_l38:
+store 3
+load 0
+load 3
+callsub saveroundbox_3
+load 0
+txn Sender
+load 2
+int 1
+callsub recordbet_4
+txn Sender
+load 1
+extract 48 8
+btoi
+callsub issuereceipt_7
+int 1
+return
+main_l39:
+load 1
+extract 0 8
+btoi
+itob
+load 1
+extract 8 8
+btoi
+itob
+concat
+load 1
+extract 16 8
+btoi
+load 2
++
+itob
+concat
+load 1
+extract 24 8
+btoi
+itob
+concat
+load 1
+extract 32 8
+btoi
+itob
+concat
+load 1
+extract 40 8
+btoi
+itob
+concat
+load 1
+extract 48 8
+btoi
+itob
+concat
+b main_l38
+main_l40:
+txn NumAppArgs
+int 1
+==
+assert
+byte "oracle_app_id"
+txna ApplicationArgs 0
+btoi
+app_global_put
+int 1
+return
+
+// read_oracle_price
+readoracleprice_0:
+proto 1 1
+frame_dig -1
+byte "price"
+app_global_get_ex
+store 33
+store 32
+load 33
+assert
+load 32
+retsub
+
+// ensure_round_init
+ensureroundinit_1:
+proto 2 0
+byte "r|"
+frame_dig -1
+itob
+concat
+store 34
+load 34
+box_get
+store 38
+store 37
+load 38
+!
+bz ensureroundinit_1_l2
+frame_dig -2
+callsub readoracleprice_0
+store 36
+itxn_begin
+int acfg
+itxn_field TypeEnum
+int 1000000000
+itxn_field ConfigAssetTotal
+int 0
+itxn_field ConfigAssetDecimals
+byte "RCPT"
+itxn_field ConfigAssetUnitName
+byte "RoundReceipt_"
+frame_dig -1
+itob
+concat
+itxn_field ConfigAssetName
+global CurrentApplicationAddress
+itxn_field ConfigAssetManager
+global CurrentApplicationAddress
+itxn_field ConfigAssetReserve
+global CurrentApplicationAddress
+itxn_field ConfigAssetFreeze
+global CurrentApplicationAddress
+itxn_field ConfigAssetClawback
+itxn_submit
+itxn CreatedAssetID
+store 39
+load 36
+itob
+int 0
+itob
+concat
+int 0
+itob
+concat
+int 0
+itob
+concat
+int 0
+itob
+concat
+int 0
+itob
+concat
+load 39
+itob
+concat
+store 35
+load 34
+load 35
+len
+box_create
+pop
+load 34
+load 35
+box_put
+ensureroundinit_1_l2:
+retsub
+
+// load_round_box
+loadroundbox_2:
+proto 1 1
+byte "r|"
+frame_dig -1
+itob
+concat
+box_get
+store 41
+store 40
+load 41
+assert
+load 40
+retsub
+
+// save_round_box
+saveroundbox_3:
+proto 2 0
+frame_dig -1
+len
+int 48
+==
+assert
+byte "r|"
+frame_dig -2
+itob
+concat
+frame_dig -1
+box_put
+retsub
+
+// record_bet
+recordbet_4:
+proto 4 0
+byte "b|"
+frame_dig -4
+itob
+concat
+byte "|"
+concat
+frame_dig -3
+concat
+box_get
+store 43
+store 42
+load 43
+!
+assert
+byte "b|"
+frame_dig -4
+itob
+concat
+byte "|"
+concat
+frame_dig -3
+concat
+int 24
+box_create
+pop
+byte "b|"
+frame_dig -4
+itob
+concat
+byte "|"
+concat
+frame_dig -3
+concat
+frame_dig -2
+itob
+frame_dig -1
+itob
+concat
+int 0
+itob
+concat
+box_put
+retsub
+
+// mark_claimed
+markclaimed_5:
+proto 2 0
+byte "b|"
+frame_dig -2
+itob
+concat
+byte "|"
+concat
+frame_dig -1
+concat
+box_get
+store 45
+store 44
+load 45
+assert
+load 44
+extract 16 8
+btoi
+int 0
+==
+assert
+load 44
+extract 0 8
+btoi
+itob
+load 44
+extract 8 8
+btoi
+itob
+concat
+int 1
+itob
+concat
+store 46
+byte "b|"
+frame_dig -2
+itob
+concat
+byte "|"
+concat
+frame_dig -1
+concat
+load 46
+box_put
+retsub
+
+// pay_out
+payout_6:
+proto 2 0
+itxn_begin
+int pay
+itxn_field TypeEnum
+frame_dig -1
+itxn_field Amount
+frame_dig -2
+itxn_field Receiver
+itxn_submit
+retsub
+
+// issue_receipt
+issuereceipt_7:
+proto 2 0
+itxn_begin
+int axfer
+itxn_field TypeEnum
+frame_dig -1
+itxn_field XferAsset
+int 1
+itxn_field AssetAmount
+frame_dig -2
+itxn_field AssetReceiver
+itxn_submit
+retsub

@@ -1,5 +1,5 @@
 {
-  "bets": [
+  "predictions": [
     {
       "id": "1",
       "title": "Bitcoin will reach $100,000 by end of 2024",
@@ -120,7 +120,7 @@
   ],
   "metadata": {
     "lastUpdated": "2025-09-27T15:57:01.875Z",
-    "totalBets": 5,
+    "totalPredictions": 5,
     "totalVotes": 2598,
     "version": "1.0"
   }
