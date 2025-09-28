@@ -24,11 +24,14 @@ app.prepare().then(() => {
 
   const io = new Server(httpServer, {
     cors: {
-      origin: dev ? "http://localhost:3000" : true,
+      origin: dev ? ["http://localhost:3000", "http://localhost:3001"] : "*",
       methods: ["GET", "POST"],
-      credentials: true
+      credentials: false
     },
-    allowEIO3: true
+    allowEIO3: true,
+    transports: ['websocket', 'polling'],
+    pingTimeout: 60000,
+    pingInterval: 25000
   });
 
   io.on('connection', (socket) => {
@@ -56,7 +59,9 @@ app.prepare().then(() => {
       console.error(err);
       process.exit(1);
     })
-    .listen(port, hostname, () => {
-      console.log(`> Ready on http://${hostname}:${port}`);
+    .listen(port, () => {
+      console.log(`> Ready on http://0.0.0.0:${port}`);
+      console.log(`> Environment: ${process.env.NODE_ENV}`);
+      console.log(`> Socket.IO server initialized`);
     });
 });
