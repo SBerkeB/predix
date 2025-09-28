@@ -1,9 +1,10 @@
 # Predix - Decentralized Prediction Market Platform
 
+PrediX Algo runs on Algorand smart contracts that create markets for future events. Each market issues YES/NO tokens as Algorand Standard Assets (ASAs), which users can buy and sell through an automated market maker that adjusts prices based on supply and demand.
+
 ![Predix Logo](https://img.shields.io/badge/Predix-Prediction%20Market-00D4FF?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSIjMDBENEZGIi8+Cjwvc3ZnPgo=)
 
 A modern, real-time prediction market platform built with Next.js and powered by Algorand blockchain smart contracts. Users can create predictions, place bets, and earn rewards based on accurate forecasting.
-
 ## 🌟 Features
 
 ### Core Functionality

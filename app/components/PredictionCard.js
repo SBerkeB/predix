@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 
+import Image from 'next/image';
+
 const PredictionCard = ({ prediction }) => {
   const { colors, actions, userVotes } = useApp();
   const [isVoting, setIsVoting] = useState(false);
@@ -31,11 +33,14 @@ const PredictionCard = ({ prediction }) => {
 
   // Check if this is a player vs player prediction
   const isPlayerVsPrediction = prediction.votes.hasOwnProperty('player1') && prediction.votes.hasOwnProperty('player2');
+  const isAlgoPrediction = prediction.votes.hasOwnProperty('Higher') && prediction.votes.hasOwnProperty('Lower');
   
   // Get vote options based on prediction type
   const getVoteOptions = () => {
     if (isPlayerVsPrediction) {
       return ['player1', 'player2'];
+    } else if (isAlgoPrediction){
+      return ["Higher", "Lower"];
     }
     return ['yes', 'no'];
   };
@@ -48,12 +53,21 @@ const PredictionCard = ({ prediction }) => {
       } else if (voteType === 'player2') {
         return prediction.gameDetails?.player2Name || 'Player 2';
       }
+    } else if (isAlgoPrediction) {
+      return voteType
     }
     return voteType === 'yes' ? 'Yes' : 'No';
   };
 
   // Get vote icon based on prediction type
   const getVoteIcon = (voteType) => {
+    if(isAlgoPrediction && voteType === "Higher"){
+      return(
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+        </svg>
+      )
+    }
     if (isPlayerVsPrediction) {
       return (
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,6 +93,9 @@ const PredictionCard = ({ prediction }) => {
 
   // Get vote color based on prediction type
   const getVoteColor = (voteType) => {
+    if(isAlgoPrediction){
+      return voteType === "Higher" ? colors.status.info : colors.status.warning;
+    }
     if (isPlayerVsPrediction) {
       return voteType === 'player1' ? colors.status.info : colors.status.warning;
     }
@@ -146,7 +163,7 @@ const PredictionCard = ({ prediction }) => {
       {/* Title and Description */}
       <div className="mb-6">
         <h3 
-          className="text-lg font-semibold mb-2 group-hover:text-opacity-90 transition-colors duration-200"
+          className="text-xl font-semibold mb-2 group-hover:text-opacity-90 transition-colors duration-200"
           style={{ color: colors.text.primary }}
         >
           {prediction.title}
@@ -157,6 +174,15 @@ const PredictionCard = ({ prediction }) => {
         >
           {prediction.description}
         </p>
+        <div>
+          <Image width={80} height={80} alt="Randy Marsh" src="/download.png"/>
+          <p 
+            className="text-sm font-semibold leading-relaxed"
+            style={{ color: colors.text.secondary }}
+          >
+            {prediction.aiThoughts}
+          </p>
+        </div>
       </div>
      </div>
 
